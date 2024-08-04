@@ -28,8 +28,36 @@ class SpericalCord:
     
 class SphericalSquareCord:
     
-    def __init__(self, Cord1A, Cord1B, distanceA, distanceB ):
-        self.Cord1A = float(Cord1A)
-        self.Cord1B = float(Cord1B)
+    def __init__(self, Cord1X, Cord1Y, Cord1Z, distanceA, distanceB, dimensions ):
+        self.Cord1X = float(Cord1X)
+        self.Cord1Y = float(Cord1Y)
+        self.Cord1Z = float(Cord1Z)
         self.distanceA = float(distanceA)
         self.distanceB = float(distanceB)
+        self.dimensions = str(dimensions)
+        
+        if self.dimensions.upper() == "XY":
+            self.Cord1 = SpericalCord(self.Cord1X, self.Cord1Y, self.Cord1Z)
+            self.Cord2 = SpericalCord(self.Cord1X + self.distanceA, self.Cord1Y, self.Cord1Z)
+            self.Cord3 = SpericalCord(self.Cord1X + self.distanceA, self.Cord1Y + self.distanceB, self.Cord1Z)
+            self.Cord4 = SpericalCord(self.Cord1X, self.Cord1Y + self.distanceB, self.Cord1Z)
+            
+        elif self.dimensions.upper() == "YZ":
+            self.Cord1 = SpericalCord(self.Cord1X, self.Cord1Y, self.Cord1Z)
+            self.Cord2 = SpericalCord(self.Cord1X, self.Cord1Y + self.distanceA, self.Cord1Z)
+            self.Cord3 = SpericalCord(self.Cord1X, self.Cord1Y + self.distanceA, self.Cord1Z + self.distanceB)
+            self.Cord4 = SpericalCord(self.Cord1X, self.Cord1Y, self.Cord1Z + self.distanceB)
+            
+        elif self.dimensions.upper() == "XZ": 
+            self.Cord1 = SpericalCord(self.Cord1X, self.Cord1Y, self.Cord1Z)
+            self.Cord2 = SpericalCord(self.Cord1X + self.distanceA, self.Cord1Y, self.Cord1Z)
+            self.Cord3 = SpericalCord(self.Cord1X + self.distanceA, self.Cord1Y, self.Cord1Z + self.distanceB)
+            self.Cord4 = SpericalCord(self.Cord1X, self.Cord1Y, self.Cord1Z + self.distanceB)
+            
+    def getSphericalCords(self):
+        return self.Cord1.getSphericalCords() + "/" + self.Cord2.getSphericalCords() + "\n" + self.Cord2.getSphericalCords() + "/" + self.Cord3.getSphericalCords() + "\n" + self.Cord3.getSphericalCords() + "/" + self.Cord4.getSphericalCords() + "\n" + self.Cord1.getSphericalCords() + "/" + self.Cord4.getSphericalCords()
+    
+    
+
+        
+    
