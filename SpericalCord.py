@@ -58,6 +58,28 @@ class SphericalSquareCord:
         return self.Cord1.getSphericalCords() + "/" + self.Cord2.getSphericalCords() + "\n" + self.Cord2.getSphericalCords() + "/" + self.Cord3.getSphericalCords() + "\n" + self.Cord3.getSphericalCords() + "/" + self.Cord4.getSphericalCords() + "\n" + self.Cord1.getSphericalCords() + "/" + self.Cord4.getSphericalCords()
     
     
-
-        
+class SphericalCubeCord:
     
+    def cordsToLine(self, x1, y1, z1, x2, y2, z2):
+        cord1 = SpericalCord(x1,y1,z1)
+        cord2 = SpericalCord(x2, y2, z2) 
+        return cord1.getSphericalCords() + "/" + cord2.getSphericalCords()
+    
+    def __init__(self, CordX, CordY, CordZ, distanceX, distanceY, distanceZ ):
+        self.CordX = float(CordX)
+        self.CordY = float(CordY)
+        self.CordZ = float(CordZ)
+        self.distanceX = float(distanceX)
+        self.distanceY = float(distanceY)
+        self.distanceZ = float(distanceZ)
+        
+        self.bottomSquare = SphericalSquareCord(self.CordX, self.CordY, self.CordZ, self.distanceX, self.distanceY, "XY")
+        self.topSquare = SphericalSquareCord(self.CordX, self.CordY, self.CordZ + self.distanceZ, self.distanceX, self.distanceY, "XY")
+        
+        self.line1 = self.cordsToLine(self.CordX, self.CordY, self.CordZ, self.CordX, self.CordY, self.CordZ + self.distanceZ)
+        self.line2 = self.cordsToLine(self.CordX + self.distanceX, self.CordY, self.CordZ, self.CordX + self.distanceX, self.CordY, self.CordZ + self.distanceZ)
+        self.line3 = self.cordsToLine(self.CordX, self.CordY + self.distanceY, self.CordZ, self.CordX, self.CordY + self.distanceY, self.CordZ + self.distanceZ)
+        self.line4 = self.cordsToLine(self.CordX + self.distanceX, self.CordY + self.distanceY, self.CordZ, self.CordX + self.distanceX, self.CordY + self.distanceY, self.CordZ + self.distanceZ)
+    
+    def getSphericalCords(self):
+        return self.bottomSquare.getSphericalCords() + "\n" + self.topSquare.getSphericalCords() + "\n" + self.line1 + "\n" + self.line2 + "\n" + self.line3 + "\n" + self.line4 
