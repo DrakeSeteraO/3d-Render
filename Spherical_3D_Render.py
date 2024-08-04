@@ -6,7 +6,7 @@ import math
 pixelWidth = int(input("what would you like the image width to be? "))
 pixelHeight = int(input("what would you like the image height to be? "))
 
-POV = float(input("What would you like your POV to be? "))
+POV = float(input("What would you like your FOV to be? "))
 
 fileName = input("What file would you like to view? ")
 
