@@ -8,10 +8,10 @@ try:
 
     addAnother = True
     while addAnother == True:
-        User_input = input("\nWould you like to add another coordinate?\nYes: Y\nNo: N\nSquare: S\nCube: C\n")
+        User_input = input("\nWould you like to add another coordinate?\nNo: N\nLine: L\nSquare: S\nCube: C\n")
         if User_input.upper() == "N":
             addAnother = False
-        elif User_input.upper() == "Y":
+        elif User_input.upper() == "L":
             
             validInput = False
             while validInput == False:
