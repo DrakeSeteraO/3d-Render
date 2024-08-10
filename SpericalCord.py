@@ -12,10 +12,12 @@ class SpericalCord:
         return self.rho
     
     def getThetaCord(self):
-        if self.XCord >= 0:
+        if self.XCord > 0:
             self.theta = math.atan(self.YCord / self.XCord)
         elif self.XCord < 0:
             self.theta = math.atan(self.YCord / self.XCord) + math.pi
+        elif self.XCord == 0:
+            self.theta = math.pi / 2
         return self.theta
     
     def getTheeCord(self):
