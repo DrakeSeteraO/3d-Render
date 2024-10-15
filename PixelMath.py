@@ -61,7 +61,7 @@ class PixelMath:
         try:
             runAmount = 0
             while pixelFound == False:
-                print(middle)
+                # print(middle)
                 if runAmount >= 50:
                     pixelFound = True
                     foundValue = -1
@@ -69,22 +69,22 @@ class PixelMath:
                 if list[middle] <= float(angle) and list[middle + 1] >= float(angle):
                     foundValue = middle
                     pixelFound = True
-                    print("Yes!")
+                    # print("Yes!")
                 
                 elif middle >= len(list) or middle < 0:
                     foundValue = -1
                     pixelFound = True
-                    print("Out of bounds")
+                    # print("Out of bounds")
                         
                 elif list[middle] <= float(angle):
                     middle += distance
                     distance = int(distance / 2)
-                    print("too small")
+                    # print("too small")
                     
                 elif list[middle] >= float(angle):
                     middle -= distance
                     distance = int(distance / 2)
-                    print("too big")
+                    # print("too big")
                 
                 if distance <= 0:
                     distance = 1
